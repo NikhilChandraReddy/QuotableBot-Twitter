@@ -2,7 +2,7 @@ name: Run-Tweet Bot
 
 on:
   schedule:
-      - cron: '10 9 * * *'
+      - cron: '17 9 * * *'
     # - cron: '0 0,8,16 * * *' # Schedule to run at 00:00, 08:00, and 16:00 UTC (adjust the time according to your timezone)
     
 
