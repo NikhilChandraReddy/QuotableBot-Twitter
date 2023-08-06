@@ -14,16 +14,23 @@ def main():
 
     # Initialize Quote Reader
     quote_fetcher = QuoteFetcher()
-
-    # Get a random quote
-    quote_data = quote_fetcher.get_random_quote()
-    quote = quote_data['quote']
-    author = quote_data['author']
-    category = quote_data.get('category', 'Uncategorized')
-    wiki_link = quote_data.get('wiki_link', '')
-
-    tweet_text = f'"{quote}" - {author}'
     
+    #Loop until the tweet is with 280 characters
+    while True:
+        # Get a random quote
+        quote_data = quote_fetcher.get_random_quote()
+        quote = quote_data['quote']
+        author = quote_data['author']
+        category = quote_data.get('category', 'Uncategorized')
+        wiki_link = quote_data.get('wiki_link', '')
+    
+        tweet_text = f'{quote} - {author}'
+        
+        # Check if the tweet is within the character limit (280 characters)
+        if len(tweet_text) <= 280:
+            break
+    
+    # Print the tweet text
     print(tweet_text)
 
     # Tweet the quote
