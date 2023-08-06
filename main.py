@@ -24,14 +24,11 @@ def main():
         category = quote_data.get('category', 'Uncategorized')
         wiki_link = quote_data.get('wiki_link', '')
     
-        tweet_text = f'{quote} - {author}'
+        tweet_text = f'"{quote}" -{author}'
         
         # Check if the tweet is within the character limit (280 characters)
         if len(tweet_text) <= 280:
             break
-    
-    # Print the tweet text
-    print(tweet_text)
 
     # Tweet the quote
     twitter_api.tweet(tweet_text)
