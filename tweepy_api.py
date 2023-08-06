@@ -13,3 +13,4 @@ class TwitterAPI:
             print(response.data)
         except tweepy.TweepyException as e:
             print(f"Error while tweeting: {e}")
+            exit(1)

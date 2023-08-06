@@ -1,14 +1,21 @@
 from quote_fetcher import QuoteFetcher
 from tweepy_api import TwitterAPI
-import random
+import os
 
-# Twitter API credentials (replace with your own)
-consumer_key = "A2YiaY8zFXipy7BjDpruNVZ1q"
-consumer_secret = "LJiwRRLLG3ENsa27FMCvdGr6pyJoyISI7ANu0YaTUsbLjqdJFX"
-access_token = "1649185990907424768-AS4Hn5rVOozvKM8lVmDLX9dk5KUBi2"
-access_token_secret = "H8GoqBlfqm0DeZu7GwlihUmPEnTpZ1Ptc9bz9GMrxzo8i"
 
 def main():
+    
+    try:
+        # Twitter API credentials (replace with your own)
+        consumer_key = os.environ.get('CONSUMER_KEY')
+        consumer_secret = os.environ.get('CONSUMER_SECRET')
+        access_token = os.environ.get('ACCESS_TOKEN')
+        access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
+    except KeyError:
+        print("Secret Key Error")
+        exit(1)
+        
+    
     # Initialize Twitter API
     twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
