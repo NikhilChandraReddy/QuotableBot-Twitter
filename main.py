@@ -34,7 +34,7 @@ def main():
     print(tweet_text)
 
     # Tweet the quote
-    # twitter_api.tweet_status(tweet_text)
+    twitter_api.tweet(tweet_text)
     
 
 if __name__ == "__main__":

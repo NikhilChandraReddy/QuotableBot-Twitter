@@ -2,13 +2,13 @@ import tweepy
 
 class TwitterAPI:
     def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
-        self.api = tweepy.API(auth)
+        self.api = tweepy.Client(
+    consumer_key=consumer_key, consumer_secret=consumer_secret,
+    access_token=access_token, access_token_secret=access_token_secret)
 
-    def tweet(self, message):
+    def tweet(self, tweet_text):
         try:
-            self.api.update_status(message)
+            self.api.create_tweet(text=tweet_text)
             print("Tweeted successfully!")
-        except tweepy.TweepError as e:
-            print("Error occurred while tweeting:", e)
+        except tweepy.TweepyException as e:
+            print(f"Error while tweeting: {e}")
