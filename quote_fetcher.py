@@ -1,3 +1,5 @@
+import random
+
 class QuoteFetcher:
     def __init__(self, file_path='quotes.json'):
         self.file_path = file_path
