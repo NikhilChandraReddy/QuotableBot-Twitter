@@ -8,7 +8,8 @@ class TwitterAPI:
 
     def tweet(self, tweet_text):
         try:
-            self.api.create_tweet(text=tweet_text)
+            response= self.api.create_tweet(text=tweet_text)
             print("Tweeted successfully!")
+            print(response.data)
         except tweepy.TweepyException as e:
             print(f"Error while tweeting: {e}")
