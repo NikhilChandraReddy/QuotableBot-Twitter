@@ -3,23 +3,32 @@ from tweepy_api import TwitterAPI
 import random
 
 # Twitter API credentials (replace with your own)
-consumer_key = "YOUR_CONSUMER_KEY"
-consumer_secret = "YOUR_CONSUMER_SECRET"
-access_token = "YOUR_ACCESS_TOKEN"
-access_token_secret = "YOUR_ACCESS_TOKEN_SECRET"
+consumer_key = "A2YiaY8zFXipy7BjDpruNVZ1q"
+consumer_secret = "LJiwRRLLG3ENsa27FMCvdGr6pyJoyISI7ANu0YaTUsbLjqdJFX"
+access_token = "1649185990907424768-AS4Hn5rVOozvKM8lVmDLX9dk5KUBi2"
+access_token_secret = "H8GoqBlfqm0DeZu7GwlihUmPEnTpZ1Ptc9bz9GMrxzo8i"
 
-def get_random_quote():
-    # Instantiate the QuoteFetcher and read quotes from the file
-    quote_fetcher = QuoteFetcher("quotes.txt")
-    quotes = quote_fetcher.get_quotes()
-    return random.choice(quotes)
-
-def tweet_random_quote():
-    quote = get_random_quote()
-    
-    # Instantiate the TwitterAPI with your credentials
+def main():
+    # Initialize Twitter API
     twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
-    twitter_api.tweet(quote)
+
+    # Initialize Quote Reader
+    quote_fetcher = QuoteFetcher()
+
+    # Get a random quote
+    quote_data = quote_fetcher.get_random_quote()
+    quote = quote_data['quote']
+    author = quote_data['author']
+    category = quote_data.get('category', 'Uncategorized')
+    wiki_link = quote_data.get('wiki_link', '')
+
+    tweet_text = f'"{quote}" - {author}'
+    
+    print(tweet_text)
+
+    # Tweet the quote
+    # twitter_api.tweet_status(tweet_text)
+    
 
 if __name__ == "__main__":
-    tweet_random_quote()
+    main()
