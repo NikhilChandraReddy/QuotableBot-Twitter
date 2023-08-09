@@ -32,7 +32,7 @@ def main():
         wiki_link = quote_data.get('wiki_link', '')
     
         tweet1_text = f'"{quote}" -{author}'
-        tweet2_text = f'#{category} Learn more about the {wiki_link}'
+        tweet2_text = f'#{category} \nLearn more about the author: {wiki_link}'
         
         # Check if the tweet is within the character limit (280 characters)
         if len(tweet1_text) <= 280 and len(tweet2_text) <= 280:
