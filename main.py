@@ -39,7 +39,7 @@ def main():
             # Tweet the quote
             reponse_tweet1= twitter_api.tweet(tweet1_text, None)
             # Reply Tweet with WikiLink
-            reponse_tweet2= twitter_api.tweet(tweet2_tex, reponse_tweet1["id"])
+            reponse_tweet2= twitter_api.tweet(tweet2_text, reponse_tweet1["id"])
             break
 
 
