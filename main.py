@@ -16,7 +16,7 @@ def main():
         exit(1)
         
     
-    # Initialize Twitter API
+    #Initialize Twitter API
     twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
     # Initialize Quote Reader
@@ -31,15 +31,17 @@ def main():
         category = quote_data.get('category', 'Uncategorized')
         wiki_link = quote_data.get('wiki_link', '')
     
-        tweet_text = f'"{quote}" -{author}'
+        tweet1_text = f'"{quote}" -{author}'
+        tweet2_text = f'#{category} Learn more about the {wiki_link}'
         
         # Check if the tweet is within the character limit (280 characters)
-        if len(tweet_text) <= 280:
+        if len(tweet1_text) <= 280 and len(tweet2_text) <= 280:
+            # Tweet the quote
+            reponse_tweet1= twitter_api.tweet(tweet1_text, None)
+            # Reply Tweet with WikiLink
+            reponse_tweet2= twitter_api.tweet(tweet2_tex, reponse_tweet1["id"])
             break
 
-    # Tweet the quote
-    twitter_api.tweet(tweet_text)
-    
 
 if __name__ == "__main__":
     main()
