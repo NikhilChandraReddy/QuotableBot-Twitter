@@ -12,7 +12,7 @@ class QuoteFetcher:
         headers = {
             'X-Api-Key': self.api_key
         }
-        response = requests.get(self.api_url.format(self.category)), headers=headers)
+        response = requests.get(self.api_url.format(self.category), headers=headers)
         if response.status_code == 200:
             data = response.json()
             return data
