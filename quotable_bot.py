@@ -25,7 +25,7 @@ def main():
         access_token = os.environ.get('ACCESS_TOKEN')
         access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
         # API-credentials Api-ninjas quotes API(replace with your own)
-        api-key= os.environ.get('QUOTES_API_KEY')
+        api_key = os.environ.get('QUOTES_API_KEY')
     except KeyError:
         print("Error: Failed to fetch secret-keys")
         exit(1)
@@ -35,32 +35,31 @@ def main():
     twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
     # Initialize Quote Reader
-    quote_fetcher = QuoteFetcher()
+    quote_fetcher = QuoteFetcher(api_key=api_key, category=get_random_category())
     
     #Loop until the tweet is with 280 characters
     while True:
         # Get a random quote
-        quote_data = quote_fetcher.get_random_quote(api-key, get_random_category())
-        quote-text = quote_data['quote']
-        quote-author = quote_data['author']
-        quote-category = quote_data.get('category')
+        quote_data = quote_fetcher.get_random_quote()
+        quote_text = quote_data['quote']
+        quote_author = quote_data['author']
+        quote_category = quote_data.get('category')
     
         #Construct tweets
-        tweet1_text = f'"{quote-text}" -{quote-author} \n '
+        tweet1_text = '"{}" - {}\n'.format(quote_text, quote_author)
         tweet2_text = (
-            "🌟 Inspiring quote! 🌟\n"
-            "Life is what happens when you're busy making other plans.\n\n"
+            "🌟 What an Inspiring quote! 🌟\n"
             "Share your thoughts! 💬\n"
             "What does this quote mean to you? Let's discuss! ⬇️\n\n"
-            "#Quotes #{quote-category} #Motivation #Thoughts #Discussion #TwitterBot"
-        )
+            "#Quotes #{} #Motivation #Thoughts #Discussion #TwitterBot"
+        ).format(quote_category.capitalize())
         
         # Check if the tweet is within the character limit (280 characters)
         if len(tweet1_text) <= 280 and len(tweet2_text) <= 280:
             # Tweet the quote
             reponse_tweet1= twitter_api.tweet(tweet1_text, None)
             # Reply Tweet with category
-            reponse_tweet2= twitter_api.tweet(tweet2_text, reponse_tweet1["id"])
+            twitter_api.tweet(tweet2_text, reponse_tweet1["id"])
             break
 
 
