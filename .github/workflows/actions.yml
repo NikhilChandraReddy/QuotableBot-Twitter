@@ -3,7 +3,7 @@ name: Run-Tweet Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '43 9 * * *'
+    - cron: '48 3,11,19 * * *'
     
 jobs:
   tweet:
@@ -20,9 +20,10 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: Run Twitter Bot
-        run: python main.py
+        run: python quotable_bot.py
         env:
           CONSUMER_KEY: '${{ secrets.CONSUMER_KEY }}'
           CONSUMER_SECRET: '${{ secrets.CONSUMER_SECRET }}'
           ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
           ACCESS_TOKEN_SECRET: '${{ secrets.ACCESS_TOKEN_SECRET }}'
+          QUOTES_API_KEY: '${{ secrets.QUOTES_API_KEY }}'
