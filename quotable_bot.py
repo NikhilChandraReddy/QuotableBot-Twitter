@@ -48,10 +48,10 @@ def main():
         #Construct tweets
         tweet1_text = '"{}" - {}\n'.format(quote_text, quote_author)
         tweet2_text = (
-            "🌟 What an Inspiring quote! 🌟\n"
+            "🌟 Embrace the wisdom of this profound quote! 🌟\n"
             "Share your thoughts! 💬\n"
-            "What does this quote mean to you? Let's discuss! ⬇️\n\n"
-            "#Quotes #{} #Motivation #Thoughts #Discussion #TwitterBot"
+            "What does this quote mean to you? Let's discuss! 🗣️⬇️\n\n"
+            "#QuoteOfTheDay #{} #InspirationalQuotes #MotivationalQuotes #TwitterBot #BotAccount"
         ).format(quote_category.capitalize())
         
         # Check if the tweet is within the character limit (280 characters)
