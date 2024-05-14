@@ -10,7 +10,7 @@ def get_random_category():
     category_list = [
         'amazing', 'attitude', 'beauty', 'best', 'change', 'courage', 'dreams', 'education', 'equality',
         'experience', 'faith', 'family', 'freedom', 'friendship', 'happiness', 'hope', 'imagination',
-        'inspirational', 'intelligence', 'leadership', 'learning', 'life', 'love', 'success'
+        'inspirational', 'intelligence', 'leadership', 'learning', 'life', 'love', 'success', 'learning', 'life', 'love', 'success'
     ]
     #fetch random category
     return random.choice(category_list)
